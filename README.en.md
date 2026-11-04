@@ -2,19 +2,19 @@
 
 **English** · [Português](README.md)
 
-A REST API in **Java + Spring Boot** that automates the first triage step of Alagoas Medical's customer support on WhatsApp. The customer is guided through an interactive menu that identifies what they need and hands them over to a human agent when necessary, cutting the time the team spends on repetitive questions.
+A REST API in Java + Spring Boot that automates the first triage step of Alagoas Medical's customer support on WhatsApp. The customer is guided through an interactive menu that identifies what they need and hands them over to a human agent when necessary, cutting the time the team spends on repetitive questions.
 
-> 🚧 **Status:** in development, for internal use at Alagoas Medical. The triage core (menu, validation, error handling and tests) is already implemented. Integration with the official WhatsApp API is the next step on the roadmap. The project docs in `docs/` are in Portuguese.
+> Status: in development, for internal use at Alagoas Medical. The triage core (menu, validation, error handling and tests) is already implemented. Integration with the official WhatsApp API is the next step on the roadmap. The project docs in `docs/` are in Portuguese.
 
 ---
 
 ## Tech stack
 
-- **Java 21**
-- **Spring Boot** — Spring Web (REST) and Bean Validation
-- **Maven** (wrapper included)
-- **Spring Data JPA + H2** — set up for the persistence stage (see roadmap)
-- **JUnit 5 + Mockito + MockMvc** — automated tests
+- Java 21
+- Spring Boot — Spring Web (REST) and Bean Validation
+- Maven (wrapper included)
+- Spring Data JPA + H2 — set up for the persistence stage (see roadmap)
+- JUnit 5 + Mockito + MockMvc — automated tests
 
 ---
 
@@ -31,7 +31,7 @@ A REST API in **Java + Spring Boot** that automates the first triage step of Ala
 
 ## Running
 
-Requirement: **Java 21**.
+Requirement: Java 21.
 
 ```bash
 cd backend
@@ -58,7 +58,7 @@ Backend Alagoas Medical online
 
 Processes the customer's message and returns the menu's reply.
 
-**Request**
+Request
 
 ```json
 {
@@ -67,7 +67,7 @@ Processes the customer's message and returns the menu's reply.
 }
 ```
 
-**Response — `200 OK`**
+Response — `200 OK`
 
 ```json
 {
@@ -77,7 +77,7 @@ Processes the customer's message and returns the menu's reply.
 }
 ```
 
-**Menu options** (the replies themselves are in Portuguese, since the customers are Brazilian)
+Menu options (the replies themselves are in Portuguese, since the customers are Brazilian)
 
 | `message`      | Option                              | `nextAction`        |
 | -------------- | ----------------------------------- | ------------------- |
@@ -87,7 +87,7 @@ Processes the customer's message and returns the menu's reply.
 | `4`            | Talk to an agent                    | `TRANSFERIR_HUMANO` |
 | anything else  | Shows the main menu again           | `AGUARDAR_OPCAO`    |
 
-**Validation errors — `400 Bad Request`**
+Validation errors — `400 Bad Request`
 
 When `from` or `message` are empty, or the body is invalid JSON:
 
@@ -108,8 +108,8 @@ cd backend
 ./mvnw test
 ```
 
-- **`MenuServiceTest`** — unit tests for the triage logic: every menu option, the fallback, a whitespace-only message and keeping the sender's number.
-- **`MenuControllerTest`** — web-layer tests (`@WebMvcTest` + MockMvc): `200` and `400` responses, invalid JSON and a missing body.
+- `MenuServiceTest` — unit tests for the triage logic: every menu option, the fallback, a whitespace-only message and keeping the sender's number.
+- `MenuControllerTest` — web-layer tests (`@WebMvcTest` + MockMvc): `200` and `400` responses, invalid JSON and a missing body.
 
 ---
 
@@ -132,8 +132,8 @@ docs/                  # overview, requirements, plan and dev log (in Portuguese
 
 ## Roadmap
 
-- [ ] Integration with the **official WhatsApp API** (Cloud API) — receiving and sending real messages
-- [ ] **Persistence** of conversations and states (JPA entities + relational database)
+- [ ] Integration with the official WhatsApp API (Cloud API) — receiving and sending real messages
+- [ ] Persistence of conversations and states (JPA entities + relational database)
 - [ ] Support history and basic metrics
 - [ ] Deploy
 

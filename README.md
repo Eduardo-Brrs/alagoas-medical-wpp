@@ -2,19 +2,19 @@
 
 [English](README.en.md) · **Português**
 
-API REST em **Java + Spring Boot** para automatizar a triagem inicial do atendimento da Alagoas Medical no WhatsApp. O cliente é guiado por um menu interativo que identifica a necessidade e o direciona ao atendente humano quando preciso, reduzindo o tempo da equipe com perguntas repetitivas.
+API REST em Java + Spring Boot para automatizar a triagem inicial do atendimento da Alagoas Medical no WhatsApp. O cliente é guiado por um menu interativo que identifica a necessidade e o direciona ao atendente humano quando preciso, reduzindo o tempo da equipe com perguntas repetitivas.
 
-> 🚧 **Status:** em desenvolvimento, para uso interno da Alagoas Medical. O núcleo de triagem (menu, validação, tratamento de erros e testes) já está implementado. A integração com a API oficial do WhatsApp é o próximo passo do roadmap.
+> Status: em desenvolvimento, para uso interno da Alagoas Medical. O núcleo de triagem (menu, validação, tratamento de erros e testes) já está implementado. A integração com a API oficial do WhatsApp é o próximo passo do roadmap.
 
 ---
 
 ## Tech stack
 
-- **Java 21**
-- **Spring Boot** — Spring Web (REST) e Bean Validation
-- **Maven** (wrapper incluído)
-- **Spring Data JPA + H2** — configurados para a etapa de persistência (ver roadmap)
-- **JUnit 5 + Mockito + MockMvc** — testes automatizados
+- Java 21
+- Spring Boot — Spring Web (REST) e Bean Validation
+- Maven (wrapper incluído)
+- Spring Data JPA + H2 — configurados para a etapa de persistência (ver roadmap)
+- JUnit 5 + Mockito + MockMvc — testes automatizados
 
 ---
 
@@ -31,7 +31,7 @@ API REST em **Java + Spring Boot** para automatizar a triagem inicial do atendim
 
 ## Como rodar
 
-Pré-requisito: **Java 21**.
+Pré-requisito: Java 21.
 
 ```bash
 cd backend
@@ -58,7 +58,7 @@ Backend Alagoas Medical online
 
 Processa a mensagem do cliente e retorna a resposta do menu.
 
-**Request**
+Request
 
 ```json
 {
@@ -67,7 +67,7 @@ Processa a mensagem do cliente e retorna a resposta do menu.
 }
 ```
 
-**Response — `200 OK`**
+Response — `200 OK`
 
 ```json
 {
@@ -77,7 +77,7 @@ Processa a mensagem do cliente e retorna a resposta do menu.
 }
 ```
 
-**Opções do menu**
+Opções do menu
 
 | `message`      | Opção                          | `nextAction`        |
 | -------------- | ------------------------------ | ------------------- |
@@ -87,7 +87,7 @@ Processa a mensagem do cliente e retorna a resposta do menu.
 | `4`            | Falar com atendente            | `TRANSFERIR_HUMANO` |
 | qualquer outra | Reexibe o menu principal       | `AGUARDAR_OPCAO`    |
 
-**Erros de validação — `400 Bad Request`**
+Erros de validação — `400 Bad Request`
 
 Quando `from` ou `message` vêm vazios, ou o corpo é um JSON inválido:
 
@@ -108,8 +108,8 @@ cd backend
 ./mvnw test
 ```
 
-- **`MenuServiceTest`** — testes unitários da lógica de triagem: todas as opções do menu, fallback, mensagem só com espaços e preservação do número do remetente.
-- **`MenuControllerTest`** — testes da camada web (`@WebMvcTest` + MockMvc): respostas `200` e `400`, JSON inválido e corpo ausente.
+- `MenuServiceTest` — testes unitários da lógica de triagem: todas as opções do menu, fallback, mensagem só com espaços e preservação do número do remetente.
+- `MenuControllerTest` — testes da camada web (`@WebMvcTest` + MockMvc): respostas `200` e `400`, JSON inválido e corpo ausente.
 
 ---
 
@@ -132,8 +132,8 @@ docs/                  # visão geral, requisitos, plano e diário de bordo
 
 ## Roadmap
 
-- [ ] Integração com a **API oficial do WhatsApp** (Cloud API) — recebimento e envio de mensagens reais
-- [ ] **Persistência** de conversas e estados (entidades JPA + banco relacional)
+- [ ] Integração com a API oficial do WhatsApp (Cloud API) — recebimento e envio de mensagens reais
+- [ ] Persistência de conversas e estados (entidades JPA + banco relacional)
 - [ ] Histórico de atendimento e métricas básicas
 - [ ] Deploy
 
