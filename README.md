@@ -1,5 +1,7 @@
 # Alagoas Medical — Backend de Atendimento via WhatsApp
 
+[English](README.en.md) · **Português**
+
 API REST em **Java + Spring Boot** para automatizar a triagem inicial do atendimento da Alagoas Medical no WhatsApp. O cliente é guiado por um menu interativo que identifica a necessidade e o direciona ao atendente humano quando preciso, reduzindo o tempo da equipe com perguntas repetitivas.
 
 > 🚧 **Status:** em desenvolvimento, para uso interno da Alagoas Medical. O núcleo de triagem (menu, validação, tratamento de erros e testes) já está implementado. A integração com a API oficial do WhatsApp é o próximo passo do roadmap.
